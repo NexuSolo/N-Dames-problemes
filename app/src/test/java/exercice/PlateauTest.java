@@ -2,6 +2,7 @@ package exercice;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import java.util.List;
 
 public class PlateauTest {
 
@@ -91,6 +92,47 @@ public class PlateauTest {
         assertEquals(n, copyBoard.length);
         assertEquals(n, copyBoard[0].length);
         assertNotEquals(originalBoard, copyBoard);
+    }
+
+    @Test
+    public void testSolveNQueensSize1() {
+        Plateau plateau = new Plateau(1);
+        List<Plateau> solutions = plateau.solveNQueens();
+        assertEquals(1, solutions.size());
+        assertEquals('D', solutions.get(0).getBoard()[0][0]);
+    }
+
+    @Test
+    public void testSolveNQueensSize2() {
+        Plateau plateau = new Plateau(2);
+        List<Plateau> solutions = plateau.solveNQueens();
+        assertEquals(0, solutions.size()); // Impossible de placer 2 reines sur un plateau 2x2
+    }
+
+    @Test
+    public void testSolveNQueensSize3() {
+        Plateau plateau = new Plateau(3);
+        List<Plateau> solutions = plateau.solveNQueens();
+        assertEquals(0, solutions.size()); // Impossible de placer 3 reines sur un plateau 3x3
+    }
+
+    @Test
+    public void testSolveNQueensSize4() {
+        Plateau plateau = new Plateau(4);
+        List<Plateau> solutions = plateau.solveNQueens();
+        assertEquals(2, solutions.size()); // Il y a exactement 2 solutions pour n=4
+
+        for (Plateau solution : solutions) {
+            int queens = 0;
+            for (int i = 0; i < 4; i++) {
+                for (int j = 0; j < 4; j++) {
+                    if (solution.getBoard()[i][j] == 'D') {
+                        queens++;
+                    }
+                }
+            }
+            assertEquals(4, queens);
+        }
     }
 
 }

@@ -42,6 +42,26 @@ public class Plateau {
     // }
     // }
 
+    public List<Plateau> solveNQueens() {
+        List<Plateau> solutions = new ArrayList<>();
+        solve(0, solutions);
+        return solutions;
+    }
+
+    private void solve(int row, List<Plateau> solutions) {
+        if (row == size) {
+            solutions.add(new Plateau(size, copyBoard()));
+            return;
+        }
+        for (int col = 0; col < size; col++) {
+            if (isSafe(board, row, col)) {
+                board[row][col] = 'D';
+                solve(row + 1, solutions);
+                board[row][col] = 'O';
+            }
+        }
+    }
+
     public char[][] copyBoard() {
         char[][] copy = new char[size][size];
         for (int i = 0; i < size; i++) {
