@@ -9,6 +9,9 @@ public class App {
     }
 
     public static List<Plateau> getNDames(int n) {
+        if (n <= 0) {
+            throw new IllegalArgumentException("n should be greater than 0");
+        }
         return null;
     }
 
