@@ -1,5 +1,8 @@
 package exercice;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Plateau {
     private int size;
     private char[][] board;
@@ -38,6 +41,16 @@ public class Plateau {
     // System.out.println();
     // }
     // }
+
+    public char[][] copyBoard() {
+        char[][] copy = new char[size][size];
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                copy[i][j] = board[i][j];
+            }
+        }
+        return copy;
+    }
 
     public static boolean isSafe(char[][] board, int row, int col) {
         // lignes

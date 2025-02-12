@@ -80,4 +80,17 @@ public class PlateauTest {
         assertEquals(true, Plateau.isSafe(board, 2, 1));
     }
 
+    @Test
+    public void testCopyBoard() {
+        int n = 4;
+        Plateau plateau = new Plateau(n);
+        char[][] originalBoard = plateau.getBoard();
+        Plateau copyPlateau = new Plateau(n, plateau.copyBoard());
+        char[][] copyBoard = copyPlateau.getBoard();
+        assertEquals(n, copyPlateau.getSize());
+        assertEquals(n, copyBoard.length);
+        assertEquals(n, copyBoard[0].length);
+        assertNotEquals(originalBoard, copyBoard);
+    }
+
 }
