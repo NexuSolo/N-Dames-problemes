@@ -12,7 +12,10 @@ public class App {
         if (n <= 0) {
             throw new IllegalArgumentException("n should be greater than 0");
         }
-        return null;
+        Plateau plateau = new Plateau(n);
+        char[][] board = plateau.getBoard();
+        board[0][0] = 'D';
+        return List.of(plateau);
     }
 
 }
