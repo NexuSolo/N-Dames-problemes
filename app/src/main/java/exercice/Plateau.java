@@ -7,7 +7,11 @@ public class Plateau {
     public Plateau(int size) {
         this.size = size;
         this.board = new char[size][size];
-        this.board[0][0] = 'O';
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                board[i][j] = 'O';
+            }
+        }
     }
 
     public int getSize() {
